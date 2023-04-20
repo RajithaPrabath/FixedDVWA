@@ -2,10 +2,7 @@
 
 if( isset( $_POST[ 'Submit' ]  ) ) {
 	// Get input
-	$target = $_POST[ 'ip' ];
-
-	if (filter_var($target, FILTER_VALIDATE_IP)) {
-	$target = escapeshellcmd($target);
+	$target = $_REQUEST[ 'ip' ];
 
 	// Determine OS and execute the ping command.
 	if( stristr( php_uname( 's' ), 'Windows NT' ) ) {
@@ -19,12 +16,6 @@ if( isset( $_POST[ 'Submit' ]  ) ) {
 
 	// Feedback for the end user
 	$html .= "<pre>{$cmd}</pre>";
-	#echo "$html += <pre>{$cmd}</pre>";
-	}
-	else {
-		#echo 'Invalid IP';
-		$html .= "<pre>Invalid IP</pre>";
-	}
 }
 
 ?>
